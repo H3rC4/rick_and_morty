@@ -1,0 +1,9 @@
+.contenedor{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align:center;
+    flex-direction: row;
+    align-items: flex-end;  
+    justify-content: space-between;
+}

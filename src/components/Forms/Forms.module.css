@@ -1,0 +1,22 @@
+.forms {
+    width: 350px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../asets/portal.jpg');
+    align-content: center;
+   justify-items: center;
+   justify-content: center;
+    text-align: center;
+    margin-top: 70px;
+    border-radius: 20px;
+}
+button {
+  margin-left: 20px;
+  margin-right: 20px;
+  }
+  label {
+    font-weight: 500;
+    font-size: large;
+  
+  }
