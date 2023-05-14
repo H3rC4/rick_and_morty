@@ -1,5 +1,5 @@
 import { REMOVE_FAV, ADD_FAV,FILTER,ORDER } from './actionTypes'
-
+// estas action van al reducer
 export const addFav =(character)=>{
     return {
         type: ADD_FAV,

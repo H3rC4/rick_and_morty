@@ -1,28 +1,26 @@
 import Cards from './components/Cards/Cards.jsx';
 import NavBar from './components/NavBar/NavBar';
 import style from './App.module.css' 
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import About from './components/About/About'
 import Forms from './components/Forms/Forms.jsx'
 import Detail from './components/Detail/Detail'
 import Favorites from './components/Favorites/Favorites.jsx'
+// CREDENCIALES FAKE!!
+ const username = 'hernan@gmail.com';
+ const password = 'her1234';
 
 function App() {
    //hOOKS!
    const [characters, setCharacters] = useState([]);
    const {pathname} = useLocation();
-   const [access,setAccess] = useState(false);
    const navigate = useNavigate();
+   const [access, setAccess] = useState(false);
 
-useEffect(()=>{
-   !access&&navigate('/');
-},[access]);
 
-  // CREDENCIALES FAKE!!
-   const username = 'hernan@gmail.com';
-   const password = '1234';
+
 
    const login = (userData)=>{
       if(userData.username===username && userData.password===password){

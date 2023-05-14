@@ -9,44 +9,50 @@ const [userData, setUserData] = useState({
     password:"",
 })
 //seteo de errores
-const [errors, setErrors] = useState({
-  username:"",
-  password:"",
-});
+const [errors, setErrors] = useState({});
 
 const handlerInputChange =(event)=>{
   const property = event.target.name
   const value = event.target.value
 
-setUserData({...userData, [property]:value});
-validation({...userData, [property]:value},errors, setErrors);
+setUserData({
+  ...userData,
+  [property]:value
+});
+setErrors(validation({
+  ...userData,
+  [property]:value
+}));
 };
+
+
+
+
 const submitHandler = (event)=>{
  event.preventDefault();
   login(userData);
 }
   return (
-    <form className={style.forms} onSubmit={submitHandler}>
-     
+    <form className={style.forms}>
       <div>
-        {""}
+      
         <label htmlFor="username">Username:</label>
       </div>
       <div>
-        {" "}
         <input type="text" onChange={handlerInputChange} name="username" value={userData.username}/>
-      <p>{errors.username}</p>
+        {errors.e1 ? (<p>{errors.e1}</p>)
+        : errors.e2 ? (<p>{errors.e2}</p>) 
+        : (<p>{errors.e3}</p>)
+        }
       </div>
-
       <div>
       </div>
-        <label htmlFor="password">Password:</label>{" "}
+        <label htmlFor="password">Password:</label>
       <div>
-        {" "}
         <input type="text" name="password" onChange={handlerInputChange}  value={userData.password}/>
+        {errors.p1? (<p>{errors.p1}</p>):<p>{errors.p2}</p>}
       </div>
-
-      <button>LOGIN</button>
+      <button  onClick={submitHandler} type="submit">LOGIN</button>
     </form>
   );
 };
