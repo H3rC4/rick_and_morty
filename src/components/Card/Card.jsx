@@ -4,7 +4,7 @@ import {addFav, removeFav} from "../../redux/actions";
 import {connect} from 'react-redux';
 import { useState, useEffect } from "react";
 
-const Card = ({id, name, species, image, onClose, removeFav, addFav, myFavorites}) => {
+const Card = ({id, name, species, gender, image, onClose, removeFav, addFav, myFavorites}) => {
   
   const [isFav,setIsFav] = useState(false);
 
@@ -14,7 +14,7 @@ const Card = ({id, name, species, image, onClose, removeFav, addFav, myFavorites
       removeFav(id);//aca recibe el id y se lo pasa a mapDispatchToProps
     }else{
       setIsFav(true);
-      addFav({id, name, species, image})
+      addFav({id, name, species, image, gender})
       //aca paso el objeto desestructurado a la linea 42
     }
   }
@@ -35,6 +35,7 @@ const Card = ({id, name, species, image, onClose, removeFav, addFav, myFavorites
          <button onClick={handleFavorite}>{isFav? '❤️' : '🤍'}</button>
           <h2>{name}</h2>
           <h2>{species}</h2>
+          <h2>{gender}</h2>
          
           <div className={style.button}>
         <button  onClick={() => {onClose(id);}}>Close</button>

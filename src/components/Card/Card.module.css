@@ -58,7 +58,6 @@
 }
 .card .content .details .data{
   display: flex;
-  justify-content:space-between ;
   margin: 20px 0;
 }
 .card .content .details .data h3{
@@ -75,11 +74,11 @@
 
 .card .content .details .button button {
   
-  padding: 15px 60px;
+  padding: 10px 40px;
   border-radius: 5px;
   border: none;
   outline: none;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 500; 
   background: #e8dc35;
   color:  #890000;

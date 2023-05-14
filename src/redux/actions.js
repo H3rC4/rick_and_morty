@@ -17,10 +17,10 @@ export const filterCards = (gender)=>{
         type: FILTER,
         payload:gender
     }
-}
+};
 export const orderCards = (orden)=>{
     return{
         type: ORDER,
         payload:orden
     }
-}
+};
