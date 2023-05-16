@@ -1,7 +1,7 @@
 import Cards from './components/Cards/Cards.jsx';
 import NavBar from './components/NavBar/NavBar';
 import style from './App.module.css' 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import About from './components/About/About'
@@ -32,7 +32,7 @@ function App() {
    };
 
    function onSearch(id) {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+      axios(`http://localhost:3001/rickandmorty/character/${id-1}`).then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
