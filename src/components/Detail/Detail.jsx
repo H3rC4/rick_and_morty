@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import style from './Detail.module.css'
 import { Link } from 'react-router-dom';
+
 const Detail = ()=>{
+
    const {id} = useParams();
    const [character, setCharacter] = useState({});
+
    useEffect(() => {
-      axios(`http://localhost:3001/rickandmorty/character/${id-1}`).then(({ data }) => {
+      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
          if (data.name) {
             setCharacter(data);
          } else {

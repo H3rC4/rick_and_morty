@@ -1,14 +1,17 @@
+//!-------components-------
 import Cards from './components/Cards/Cards.jsx';
 import NavBar from './components/NavBar/NavBar';
+import Forms from './components/Forms/Forms.jsx'
+import About from './components/About/About'
+import Detail from './components/Detail/Detail'
+//!----stiles----
 import style from './App.module.css' 
-import { useState } from 'react';
+//!-----------imports-----------------------------
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import About from './components/About/About'
-import Forms from './components/Forms/Forms.jsx'
-import Detail from './components/Detail/Detail'
 import Favorites from './components/Favorites/Favorites.jsx'
-// CREDENCIALES FAKE!!
+//! CREDENCIALES FAKE!!
  const username = 'hernan@gmail.com';
  const password = 'her1234';
 
@@ -19,7 +22,9 @@ function App() {
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
 
-
+   useEffect(() => {
+      !access && navigate("/");
+    }, [access, navigate]);
 
 
    const login = (userData)=>{
@@ -32,7 +37,7 @@ function App() {
    };
 
    function onSearch(id) {
-      axios(`http://localhost:3001/rickandmorty/character/${id-1}`).then(({ data }) => {
+      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {

@@ -1,5 +1,5 @@
 import style from "./Card.module.css";
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {addFav, removeFav} from "../../redux/actions";
 import {connect} from 'react-redux';
 import { useState, useEffect } from "react";
@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 const Card = ({id, name, species, gender, image, onClose, removeFav, addFav, myFavorites}) => {
   
   const [isFav,setIsFav] = useState(false);
+  const {pathname} = useLocation();
 
   const  handleFavorite =()=>{
     if(isFav){
@@ -32,13 +33,13 @@ const Card = ({id, name, species, gender, image, onClose, removeFav, addFav, myF
       <div className={style.content}>
         <div className={style.details}>
           
-         <button onClick={handleFavorite}>{isFav? '❤️' : '🤍'}</button>
           <h2>{name}</h2>
           <h2>{species}</h2>
           <h2>{gender}</h2>
          
           <div className={style.button}>
-        <button  onClick={() => {onClose(id);}}>Close</button>
+         <button onClick={handleFavorite}>{isFav? '❤️' : '🤍'}</button>
+       { pathname !== '/favorites' &&  <button  onClick={() => {onClose(id);}}>Close</button>}
         </div>
         
         </div>
