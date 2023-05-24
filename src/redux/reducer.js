@@ -10,21 +10,21 @@ const reducer = (state = initialState, action) => {
   //renombra 'initialState' a 'state'
 
   switch (action.type) {
+    
     case ADD_FAV:
-      return {
-        ...state,
-        myFavorites: [...state.allCharacters, action.payload],
-        allCharacters: [...state.allCharacters, action.payload],
-      };
+          return { 
+            ...state,
+            myFavorites:action.payload,
+            allCharacters: action.payload 
+          };
     case REMOVE_FAV:
       return {
         ...state,
-        myFavorites: state.myFavorites.filter(
-          (fav) => fav.id !== Number(action.payload)
-        ),
+        myFavorites:action.payload,
+      //  allCharacters: action.payload
       };
     case FILTER:
-        const allCharactersFiltered = state.myFavorites.filter((character)=>character.gender === action.payload)
+        const allCharactersFiltered = state.allCharacters.filter((character)=>character.gender === action.payload)
       return {
         ...state,
         myFavorites: allCharactersFiltered
