@@ -52,7 +52,7 @@ function App() {
   const onClose = (id) => {
     setCharacters(
       characters.filter((elem) => {
-        return elem.id !== Number(id);
+        return elem.id !== id;
       })
     );
   };

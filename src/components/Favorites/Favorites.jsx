@@ -4,25 +4,25 @@ import style from './Favorites.module.css'
 import { filterCards, orderCards } from "../../redux/actions";
 import { useState } from "react";
 
-const Favorites= ({myFavorites})=>{//  aca llega state lo desestructuro a myFavorite
-    
-    const [axu,setAux]= useState(false);
+const Favorites = ({ myFavorites }) => {//  aca llega state lo desestructuro a myFavorite
+
+    const [axu, setAux] = useState(false);
     const dispatch = useDispatch();
-  
-    const handleOrder = (event)=>{
+
+    const handleOrder = (event) => {
         dispatch(orderCards(event.target.value));
         setAux(!axu);
     }
-   
-    const handleFilter = (event)=>{
+
+    const handleFilter = (event) => {
         dispatch(filterCards(event.target.value));
     }
-    
 
 
-  return (
+
+    return (
         <div className={style.contenedor}>
-            <div>
+            <div className={style.filter} >
                 <select onChange={handleOrder}>
                     <option value="A">Ascendente</option>
                     <option value="B">Descendente</option>
@@ -35,28 +35,30 @@ const Favorites= ({myFavorites})=>{//  aca llega state lo desestructuro a myFavo
 
                 </select>
             </div>
-            { myFavorites?.map(({id,name,species,image,onClose,gender})=>{
-            return(
-            <Card
-            key={id}
-            id={id}
-            name= {name}
-            species={species}
-            gender={gender}
-            image={image}
-            onClose={onClose}
-            />
-            )
-        })
+            <div className={style.cards}>
+            {myFavorites?.map(({ id, name, species, image, onClose, gender }) => {
+                return (
+                    <Card
+                        key={id}
+                        id={id}
+                        name={name}
+                        species={species}
+                        gender={gender}
+                        image={image}
+                        onClose={onClose}
+                    />
+                )
+            })
             }
+            </div>
         </div>
     )
 
 }
 //state siempre viene del cielo osea por q si
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
     return {
-         myFavorites: state.myFavorites,
+        myFavorites: state.myFavorites,
     }
 };
 

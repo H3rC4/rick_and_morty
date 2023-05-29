@@ -25,7 +25,7 @@ const Card = ({id, name, species, gender, image, onClose, removeFav, addFav, myF
            setIsFav(true);
         }
      });
-  }, [myFavorites]);
+  }, [myFavorites,id]);
   
   return (
          <div className={style.card}>

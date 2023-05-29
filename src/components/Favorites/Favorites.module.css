@@ -1,4 +1,9 @@
 .contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+.cards{
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
